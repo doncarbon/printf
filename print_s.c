@@ -11,9 +11,10 @@ int print_s(char *str)
 
 	if (str == NULL)
 		str = "(null)";
+
 	while (str[len] != '\0')
 	{
-		write(1, &str[len], 1);
+		write(STDOUT_FILENO, &str[len], 1);
 		len++;
 	}
 	return (len);

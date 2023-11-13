@@ -11,21 +11,21 @@ int _printf(const char *format, ...)
 	int countofpchar = 0;
 	va_list args;
 
-	if (!format || (format[0] == '%' && format[1] == '\0'))
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
 
 	va_start(args, format);
 
 	while (*format != '\0')
 	{
-		if (*format != '%')
-		{
-			countofpchar += print_c(*format);
-		}
-		else
+		if (*format == '%')
 		{
 			format++;
 			countofpchar += specifiers(*format, args);
+		}
+		else
+		{
+			countofpchar += print_c(*format);
 		}
 		format++;
 	}
