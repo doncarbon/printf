@@ -8,7 +8,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int countofpchar = 0;
+	int c = 0, countofpchar = 0;
 	va_list args;
 
 	if (format == NULL)
@@ -16,61 +16,31 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 
-	while (*format)
+	for ( ; format[c] != '\0'; c++)
 	{
-		if (*format != '%')
+		if (format[c] != '%')
 		{
-			write(1, format, 1);
-			countofpchar++;
+			_putchar(format[c]);
 		}
-		else
+		else if (format[c+1] == 'c')
 		{
-			format++;
-			if (*format == '\0')
-				break;
-			if (*format == '%')
-			{
-				write(1, format, 1);
-				countofpchar++;
-			}
-			else if (*format == 'c')
-			{
-				char c = va_arg(args, int);
-
-				write(1, &c, 1);
-				countofpchar++;
-			}
-			else if (*format == 's')
-			{
-				char *str = va_arg(args, char*);
-				int len = 0;
-
-				while (str[len] != '\0')
-					len++;
-				write(1, str, len);
-				countofpchar += len;
-			}
+			_putchar(va_arg(args, int));
+			c++;
 		}
-		format++;
+		else if (format[c+1] == 's')
+		{
+			int count = print_s(va_arg(args, char *);
+			
+			c++;
+			countofpchar += (count - 1);
+		}
+		else if (format[c+1] == '%')
+		{
+			_putchar('%');
+			c++;
+		}
+		countofpchar += 1;
 	}
 	va_end(args);
-
 	return (countofpchar);
-}
-
-/**
- * _printf_str - Custom printf that prints str function
- * @str: string
- *
- * Return: Number of characters printed (excluding null byte)
- */
-int _printf_str(char *str)
-{
-	int len = 0;
-
-	while (str[len] != '\0')
-		len++;
-	write(1, str, len);
-
-	return (len);
 }
