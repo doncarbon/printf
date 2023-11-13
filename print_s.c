@@ -7,16 +7,14 @@
  */
 int print_s(char *str)
 {
-	int len = 0, count = 0;
+	int len = 0;
 
-	if (str)
+	if (str == NULL)
+		str = "(null)";
+	while (str[len] != '\0')
 	{
-		while (str[len] != '\0')
-		{
-			c_putchar(str[len]);
-			count += 1;
-			len++;
-		}
+		write(1, &str[len], 1);
+		len++;
 	}
-	return (count);
+	return (len);
 }
