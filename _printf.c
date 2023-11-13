@@ -13,7 +13,7 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 
-	for (c = 0 ; format[c] != '\0'; c++)
+	for (c = 0; format[c] != '\0'; c++)
 	{
 		if (format[c] != '%')
 		{
@@ -38,5 +38,7 @@ int _printf(const char *format, ...)
 		}
 		countofpchar += 1;
 	}
+	va_end(args);
+
 	return (countofpchar);
 }
