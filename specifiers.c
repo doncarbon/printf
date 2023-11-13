@@ -14,13 +14,13 @@ int specifiers(char string, va_list args)
 	switch (string)
 	{
 	case 'c':
-		c += print_c(va_arg(osarg, int));
+		countofpchar += print_c(va_arg(args, int));
 		break;
 	case 's':
-		c += print_s(va_arg(osarg, char *));
+		countofpchar += print_s(va_arg(args, char *));
 		break;
 	case '%':
-		c += print_c('%');
+		countofpchar += print_c('%');
 		break;
 	}
 
