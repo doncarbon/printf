@@ -13,7 +13,7 @@ int print_s(char *str)
 	{
 		while (str[len] != '\0')
 		{
-			_putchar(str[len]);
+			c_putchar(str[len]);
 			count += 1;
 			len++;
 		}

@@ -16,11 +16,11 @@ int _printf(const char *format, ...)
 	{
 		if (format[c] != '%')
 		{
-			_putchar(format[c]);
+			c_putchar(format[c]);
 		}
 		else if (format[c + 1] == 'c')
 		{
-			_putchar(va_arg(args, int));
+			c_putchar(va_arg(args, int));
 			c++;
 		}
 		else if (format[c + 1] == 's')
@@ -32,7 +32,7 @@ int _printf(const char *format, ...)
 		}
 		else if (format[c + 1] == '%')
 		{
-			_putchar('%');
+			c_putchar('%');
 			c++;
 		}
 		countofpchar += 1;
