@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 		}
 		else if (format[c + 1] == 's')
 		{
-			int count = print_s(va_arg(args, char *);
+			int count = print_s(va_arg(args, char *));
 
 			c++;
 			countofpchar += (count - 1);
