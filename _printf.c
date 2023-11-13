@@ -8,7 +8,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int c = 0, countofpchar = 0;
+	int countofpchar = 0;
 	va_list args;
 
 	if (!format || (format[0] == '%' && format[1] == '\0'))
