@@ -8,11 +8,12 @@
  */
 int _printf(const char *format, ...)
 {
-	int c = 0, countofpchar = 0;
+	int c, countofpchar = 0;
 	va_list args;
+
 	va_start(args, format);
 
-	for ( ; format[c] != '\0'; c++)
+	for (c = 0 ; format[c] != '\0'; c++)
 	{
 		if (format[c] != '%')
 		{
