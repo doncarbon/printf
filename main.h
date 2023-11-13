@@ -5,6 +5,5 @@
 #include <stdarg.h>
 
 int _printf(const char *format, ...);
-int _printf_str(char *str);
 
 #endif
