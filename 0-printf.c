@@ -41,6 +41,5 @@ int _printf(const char *format, ...)
 		}
 		countofpchar += 1;
 	}
-	va_end(args);
 	return (countofpchar);
 }
