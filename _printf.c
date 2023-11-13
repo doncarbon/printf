@@ -12,6 +12,8 @@ int _printf(const char *format, ...)
 	va_list args;
 
 	va_start(args, format);
+	if (!format)
+		return (-1);
 
 	for (c = 0; format[c] != '\0'; c++)
 	{
