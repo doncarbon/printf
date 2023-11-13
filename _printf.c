@@ -8,37 +8,24 @@
  */
 int _printf(const char *format, ...)
 {
-	unsigned int c, countofpchar = 0;
+	int c = 0, countofpchar = 0;
 	va_list args;
 
-	va_start(args, format);
-	if (!format)
+	if (!format || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
+
+	va_start(args, format);
 
 	for (c = 0; format[c] != '\0'; c++)
 	{
 		if (format[c] != '%')
 		{
-			c_putchar(format[c]);
+			countofpchar += print_c(format[c]);
 		}
-		else if (format[c + 1] == 'c')
+		else
 		{
-			c_putchar(va_arg(args, int));
-			c++;
+			countofpchar += specifiers(format[c + 1], args);
 		}
-		else if (format[c + 1] == 's')
-		{
-			int count = print_s(va_arg(args, char *));
-
-			c++;
-			countofpchar += (count - 1);
-		}
-		else if (format[c + 1] == '%')
-		{
-			c_putchar('%');
-			c++;
-		}
-		countofpchar += 1;
 	}
 	va_end(args);
 
