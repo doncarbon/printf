@@ -10,10 +10,6 @@ int _printf(const char *format, ...)
 {
 	int c = 0, countofpchar = 0;
 	va_list args;
-
-	if (format == NULL)
-		return (-1);
-
 	va_start(args, format);
 
 	for ( ; format[c] != '\0'; c++)
