@@ -16,16 +16,18 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 
-	for (c = 0; format[c] != '\0'; c++)
+	while (*format != '\0')
 	{
-		if (format[c] != '%')
+		if (*format != '%')
 		{
-			countofpchar += print_c(format[c]);
+			countofpchar += print_c(*format);
 		}
 		else
 		{
-			countofpchar += specifiers(format[c + 1], args);
+			format++;
+			countofpchar += specifiers(*format, args);
 		}
+		format++;
 	}
 	va_end(args);
 
