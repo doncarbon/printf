@@ -22,19 +22,19 @@ int _printf(const char *format, ...)
 		{
 			_putchar(format[c]);
 		}
-		else if (format[c+1] == 'c')
+		else if (format[c + 1] == 'c')
 		{
 			_putchar(va_arg(args, int));
 			c++;
 		}
-		else if (format[c+1] == 's')
+		else if (format[c + 1] == 's')
 		{
 			int count = print_s(va_arg(args, char *);
-			
+
 			c++;
 			countofpchar += (count - 1);
 		}
-		else if (format[c+1] == '%')
+		else if (format[c + 1] == '%')
 		{
 			_putchar('%');
 			c++;
