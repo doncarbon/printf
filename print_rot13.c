@@ -7,27 +7,29 @@
  */
 int print_rot13(va_list args)
 {
-    char *str = va_arg(args, char*);
-    int characterCount = 0, i;
+	char *str = va_arg(args, char*);
+	int characterCount = 0;
+	int i;
+	char base;
 
-    if (str == NULL)
-        str = "(null)";
+	if (str == NULL)
+		str = "(null)";
 
-    for (i = 0; str[i] != '\0'; i++)
-    {
-        if ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z'))
-        {
-            char base = (str[i] >= 'a') ? 'a' : 'A';
-            printChar((str[i] - base + 13) % 26 + base);
-        }
-        else
-        {
-            printChar(str[i]);
-        }
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z'))
+		{
+			base = (str[i] >= 'a') ? 'a' : 'A';
+			printChar((str[i] - base + 13) % 26 + base);
+		}
+		else
+		{
+			printChar(str[i]);
+		}
 
-        characterCount++;
-    }
+		characterCount++;
+	}
 
-    return characterCount;
+	return (characterCount);
 }
 
