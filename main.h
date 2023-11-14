@@ -3,6 +3,8 @@
 
 #include <unistd.h>
 #include <stdarg.h>
+#include <stdio.h>
+#include <limits.h>
 #include <string.h>
 
 int _printf(const char *format, ...);
@@ -13,6 +15,6 @@ int printDecimal(va_list args);
 int printInteger(va_list args);
 int printBinary(va_list args);
 int printReversed(va_list args);
-int printf_rot13(va_list args);
+int print_rot13(va_list args);
 
 #endif
