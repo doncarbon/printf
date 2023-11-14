@@ -13,6 +13,6 @@ int printDecimal(va_list args);
 int printInteger(va_list args);
 int printBinary(va_list args);
 int printReversed(va_list args);
+int printf_rot13(va_list args);
 
 #endif
-
