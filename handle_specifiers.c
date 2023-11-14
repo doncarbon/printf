@@ -32,7 +32,7 @@ int handleSpecifier(char string, va_list args)
 		printedCharCount += printBinary(args);
 		break;
 	case 'r':
-		printedCharCount += printBinary(args);
+		printedCharCount += printReversed(args);
 		break;
 	default:
 		printedCharCount += printChar('%');

@@ -8,19 +8,18 @@
  */
 int printReversed(va_list args)
 {
-    char *str = va_arg(args, char*);
-    int length = 0;
+	char *str = va_arg(args, char*);
+	int length = 0;
+	int i;
 
-    if (str == NULL)
-        str = "(null)";
+	if (str == NULL)
+	str = "(null)";
 
-    length = strlen(str);
+	length = strlen(str);
 
-    int i;
+	for (i = length - 1; i >= 0; i--)
+	printChar(str[i]);
 
-    for (i = length - 1; i >= 0; i--)
-        printChar(str[i]);
-
-    return (length);
+	return (length);
 }
 
