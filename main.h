@@ -10,6 +10,8 @@ int _printf(const char *format, ...);
 int printChar(char c);
 int printString(char *str);
 int handleSpecifier(char string, va_list args);
+int printDecimal(va_list args);
+int printInteger(va_list args);
 
 #endif
 
