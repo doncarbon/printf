@@ -1,23 +1,26 @@
 #include "main.h"
-#include <string.h>
 
 /**
- * printReversed - prints the reversed string
+ * printReversed - prints reversed string from argument list
  * @args: argument to print
- * Return: number of characters printed
+ *
+ * Return: the string
  */
 int printReversed(va_list args)
 {
-    char *str = va_arg(args, char *);
-    int length = strlen(str);
-    int characterCount = 0;
+    char *str = va_arg(args, char*);
+    int length = 0;
 
-    for (int i = length - 1; i >= 0; i--)
-    {
+    if (str == NULL)
+        str = "(null)";
+
+    length = strlen(str);
+
+    int i;
+
+    for (i = length - 1; i >= 0; i--)
         printChar(str[i]);
-        characterCount++;
-    }
 
-    return characterCount;
+    return (length);
 }
 
