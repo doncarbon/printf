@@ -1,31 +1,30 @@
-#include "main.h"
-/**
- * printBinary - prints binary number.
- * @val: parameter.
- * Return: integer
- */
 int printBinary(va_list args)
 {
-	unsigned int num = va_arg(args, unsigned int);
-	int charCount = 0;
+    int isFirstNonZeroBitFound = 0;
+    int characterCount = 0;
+    int i, bitmask = 1, binaryDigit;
+    unsigned int number = va_arg(args, unsigned int);
+    unsigned int bitCheck;
 
-	int i;
+    for (i = 31; i >= 0; i--)
+    {
+        bitCheck = ((bitmask << i) & number);
+        if (bitCheck >> i)
+            isFirstNonZeroBitFound = 1;
+        if (isFirstNonZeroBitFound)
+        {
+            binaryDigit = bitCheck >> i;
+            printChar(binaryDigit + '0');
+            characterCount++;
+        }
+    }
 
-	for (i = 31; i >= 0; i--)
-	{
-		unsigned int bit;
+    if (characterCount == 0)
+    {
+        characterCount++;
+        printChar('0');
+    }
 
-		bit = (num >> i) & 1;
-		printChar(bit + '0');
-		charCount++;
-	}
-
-	if (charCount == 0)
-	{
-		charCount++;
-		printChar('0');
-	}
-
-	return (charCount);
+    return characterCount;
 }
 
