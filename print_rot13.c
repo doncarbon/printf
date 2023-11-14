@@ -1,37 +1,33 @@
 #include "main.h"
+
 /**
- * print_rot13 - printf str to ROT13 place into buffer
- * @args: type struct va_arg where is allocated printf arguments
- * Return: numberofCharCount
- *
+ * printROT13 - prints the ROT13'ed string
+ * @args: argument to print
+ * Return: number of characters printed
  */
 int print_rot13(va_list args)
 {
-	int i, j, numberOfCharCount = 0;
-	int k = 0;
-	char *s = va_arg(args, char*);
-	char alpha[] = {"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"};
-	char beta[] = {"nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"};
+    char *str = va_arg(args, char*);
+    int characterCount = 0, i;
 
-	if (s == NULL)
-		s = "(null)";
-	for (i = 0; s[i]; i++)
-	{
-		k = 0;
-		for (j = 0; alpha[j] && !k; j++)
-		{
-			if (s[i] == alpha[j])
-			{
-				printChar(beta[j]);
-				numberOfCharCount++;
-				k = 1;
-			}
-		}
-		if (!k)
-		{
-			printChar(s[i]);
-			numberOfCharCount++;
-		}
-	}
-	return (numberOfCharCount);
+    if (str == NULL)
+        str = "(null)";
+
+    for (i = 0; str[i] != '\0'; i++)
+    {
+        if ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z'))
+        {
+            char base = (str[i] >= 'a') ? 'a' : 'A';
+            printChar((str[i] - base + 13) % 26 + base);
+        }
+        else
+        {
+            printChar(str[i]);
+        }
+
+        characterCount++;
+    }
+
+    return characterCount;
 }
+
