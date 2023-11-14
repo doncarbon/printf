@@ -12,6 +12,6 @@ int printString(char *str);
 int handleSpecifier(char string, va_list args);
 int printDecimal(va_list args);
 int printInteger(va_list args);
-
+int printBinary(va_list args);
 #endif
 
