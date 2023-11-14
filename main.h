@@ -3,6 +3,7 @@
 
 #include <unistd.h>
 #include <stdarg.h>
+#include <string.h>
 
 int _printf(const char *format, ...);
 int printChar(char c);
