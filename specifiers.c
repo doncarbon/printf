@@ -22,6 +22,10 @@ int specifiers(char string, va_list args)
 	case '%':
 		countofpchar += print_c('%');
 		break;
+	default:
+		countofpchar += print_c('%');
+		countofpchar += print_c(string);
+		break;
 	}
 
 	return (countofpchar);
