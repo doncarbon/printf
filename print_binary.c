@@ -1,3 +1,4 @@
+#include "main.h"
 int printBinary(va_list args)
 {
     int isFirstNonZeroBitFound = 0;
