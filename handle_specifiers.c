@@ -22,6 +22,12 @@ int handleSpecifier(char string, va_list args)
 	case '%':
 		printedCharCount += printChar('%');
 		break;
+	case 'd':
+		printedCharCount += printDecimal(args);
+		break;
+	case 'i':
+		printedCharCount += printInteger(args);
+		break;
 	default:
 		printedCharCount += printChar('%');
 		printedCharCount += printChar(string);
