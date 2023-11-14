@@ -8,28 +8,30 @@
  */
 int _printf(const char *format, ...)
 {
-	int countofpchar = 0;
+	int printedCharCount = 0;
 	va_list args;
+
+	va_start(args, format);
 
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
-
-	va_start(args, format);
 
 	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
 			format++;
-			countofpchar += specifiers(*format, args);
+			printedCharCount += handleSpecifier(*format, args);
 		}
 		else
 		{
-			countofpchar += print_c(*format);
+			printedCharCount += printChar(*format);
 		}
 		format++;
 	}
 	va_end(args);
 
-	return (countofpchar);
+	return (printedCharCount);
 }
+
+
