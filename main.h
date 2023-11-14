@@ -1,14 +1,37 @@
-#ifndef MAIN_H
-#define MAIN_H
-#include <string.h>
-#include <unistd.h>
-#include <stdarg.h>
-#include <stdio.h>
-#include <limits.h>
+#include "main.h"
 
-int _printf(const char *format, ...);
-int print_c(char c);
-int print_s(char *str);
-int specifiers(char string, va_list args);
+/**
+ * _printf - Custom printf function
+ * @format: Format string with conversion specifiers
+ *
+ * Return: Number of characters printed (excluding null byte)
+ */
+int _printf(const char *format, ...)
+{
+	int printedCharCount = 0;
+	va_list args;
 
-#endif
+	va_start(args, format);
+
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+		return (-1);
+
+	while (*format != '\0')
+	{
+		if (*format == '%')
+		{
+			format++;
+			printedCharCount += handleSpecifier(*format, args);
+		}
+		else
+		{
+			printedCharCount += printChar(*format);
+		}
+		format++;
+	}
+	va_end(args);
+
+	return (printedCharCount);
+}
+
+
