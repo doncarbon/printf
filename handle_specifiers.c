@@ -35,7 +35,7 @@ int handleSpecifier(char string, va_list args)
 		printedCharCount += printReversed(args);
 		break;
 	case 'R':
-		printedCharCount += print_rot13(args);
+		printedCharCount += printRot13(args);
 		break;
 	default:
 		printedCharCount += printChar('%');
